@@ -1,0 +1,60 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.8.6, pytest-6.2.2, py-1.10.0, pluggy-0.13.1 -- /Users/parrt/opt/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/parrt/grading/msds621/S21/rf-hxu47
+plugins: anyio-2.0.2, xdist-2.2.1, repeat-0.9.1, forked-1.3.0
+gw0 I / gw1 I / gw2 I / gw3 I / gw4 I / gw5 I
+[gw0] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw1] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw2] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw3] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw4] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw5] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw0] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw1] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw2] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw3] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw4] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw5] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+gw0 [18] / gw1 [18] / gw2 [18] / gw3 [18] / gw4 [18] / gw5 [18]
+
+scheduling tests via LoadScheduling
+
+test_rf.py::test_boston_min_samples_leaf 
+test_rf.py::test_boston 
+test_rf.py::test_diabetes 
+test_rf.py::test_diabetes_ntrees 
+test_rf.py::test_boston_most_features 
+test_rf.py::test_boston_all_features 
+[gw4] [  5%] PASSED test_rf.py::test_diabetes 
+test_rf.py::test_iris 
+[gw4] [ 11%] PASSED test_rf.py::test_iris 
+test_rf.py::test_iris_most_features 
+[gw0] [ 16%] PASSED test_rf.py::test_boston 
+test_rf.py::test_diabetes_all_features 
+[gw5] [ 22%] PASSED test_rf.py::test_diabetes_ntrees 
+test_rf.py::test_iris_all_features 
+[gw4] [ 27%] PASSED test_rf.py::test_iris_most_features 
+test_rf.py::test_wine 
+[gw5] [ 33%] PASSED test_rf.py::test_iris_all_features 
+test_rf.py::test_wine_most_features 
+[gw4] [ 38%] PASSED test_rf.py::test_wine 
+test_rf.py::test_wine_min_samples_leaf 
+[gw2] [ 44%] PASSED test_rf.py::test_boston_all_features 
+test_rf.py::test_california_housing 
+[gw5] [ 50%] PASSED test_rf.py::test_wine_most_features 
+test_rf.py::test_breast_cancer 
+[gw0] [ 55%] PASSED test_rf.py::test_diabetes_all_features 
+test_rf.py::test_wine_all_features 
+[gw1] [ 61%] PASSED test_rf.py::test_boston_min_samples_leaf 
+test_rf.py::test_diabetes_most_features 
+[gw3] [ 66%] PASSED test_rf.py::test_boston_most_features 
+test_rf.py::test_iris_ntrees 
+[gw0] [ 72%] PASSED test_rf.py::test_wine_all_features 
+[gw2] [ 77%] PASSED test_rf.py::test_california_housing 
+[gw4] [ 83%] PASSED test_rf.py::test_wine_min_samples_leaf 
+[gw3] [ 88%] PASSED test_rf.py::test_iris_ntrees 
+[gw1] [ 94%] PASSED test_rf.py::test_diabetes_most_features 
+[gw5] [100%] PASSED test_rf.py::test_breast_cancer 
+
+============================= 18 passed in 49.21s ==============================

@@ -1,0 +1,123 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.8.6, pytest-6.2.2, py-1.10.0, pluggy-0.13.1 -- /Users/parrt/opt/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/parrt/grading/msds621/S21/rf-hxu47
+plugins: anyio-2.0.2, xdist-2.2.1, repeat-0.9.1, forked-1.3.0
+gw0 I / gw1 I / gw2 I / gw3 I / gw4 I / gw5 I
+[gw0] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw1] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw2] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw3] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw4] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw5] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw0] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw1] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw2] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw3] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw4] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw5] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+gw0 [2] / gw1 [2] / gw2 [2] / gw3 [2] / gw4 [2] / gw5 [2]
+
+scheduling tests via LoadScheduling
+
+test_hidden.py::test_bulldozer 
+test_hidden.py::test_rent 
+[gw1] [ 50%] FAILED test_hidden.py::test_bulldozer 
+[gw0] [100%] PASSED test_hidden.py::test_rent 
+
+=================================== FAILURES ===================================
+________________________________ test_bulldozer ________________________________
+[gw1] darwin -- Python 3.8.6 /Users/parrt/opt/anaconda3/bin/python
+
+    def test_bulldozer():
+        bulldozer_file = "/Users/parrt/github/msds621/data/bulldozer-train.feather"
+        df = pd.read_feather(bulldozer_file)
+        # df = df.sort_values(by='saledate', ascending=True)
+    
+        basefeatures = ['SalesID', 'MachineID', 'ModelID',
+                        'datasource', 'YearMade',
+                        # some missing values but use anyway:
+                        'auctioneerID', 'MachineHoursCurrentMeter']
+    
+        X, y = df[basefeatures], df['SalePrice']
+        X = X.fillna(0)  # flip missing numeric values to zeros
+        X = X[:500]
+        y = y[:500]
+>       run_regression_test(X.values, y.values, min_training_score=.7,
+                            min_samples_leaf=5, max_features=3/4, ntrials=4, n_estimators=15)
+
+test_hidden.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+X = array([[1.646770e+06, 1.126363e+06, 8.434000e+03, ..., 1.974000e+03,
+        1.800000e+01, 0.000000e+00],
+       [1.40...000000e+00],
+       [1.595477e+06, 1.478498e+06, 8.180000e+03, ..., 1.977000e+03,
+        4.000000e+00, 0.000000e+00]])
+y = array([  9500,  24000,  35000,  19000,  14000,  22500,  31000,  46000,
+        17000,  17000,  23000,  23500,  10000, ...  28000,
+        27000,  15000,  13000,  36500,   8250,  24000,   9500,  23000,
+        67000,  21500,  11000,  12250])
+ntrials = 4, min_training_score = 0.7, min_samples_leaf = 5, max_features = 0.75
+grace = 0.08, oob = False, n_estimators = 15
+
+    def run_regression_test(X, y, ntrials=2, min_training_score = .85, min_samples_leaf=1, max_features=1.0, grace=.08, oob=False, n_estimators=18):
+        stack = inspect.stack()
+        caller_name = stack[1].function[len('test_'):]
+    
+        scores = []
+        train_scores = []
+        oob_scores = []
+    
+        sklearn_scores = []
+        sklearn_train_scores = []
+        sklearn_oob_scores = []
+    
+        for i in range(ntrials):
+            X_train, X_test, y_train, y_test = \
+                train_test_split(X, y, test_size=0.20)
+    
+            rf = RandomForestRegressor621(n_estimators=n_estimators, min_samples_leaf=min_samples_leaf, max_features=max_features, oob_score=oob)
+            rf.fit(X_train, y_train)
+            score = rf.score(X_train, y_train)
+            train_scores.append(score)
+            score = rf.score(X_test, y_test)
+            scores.append(score)
+            oob_scores.append(rf.oob_score_)
+    
+            sklearn_rf = RandomForestRegressor(n_estimators=n_estimators, min_samples_leaf=min_samples_leaf, max_features=max_features, oob_score=oob)
+            sklearn_rf.fit(X_train, y_train)
+            sklearn_score = sklearn_rf.score(X_train, y_train)
+            sklearn_train_scores.append(sklearn_score)
+            sklearn_score = sklearn_rf.score(X_test, y_test)
+            sklearn_scores.append(sklearn_score)
+            if oob:
+                sklearn_oob_scores.append(sklearn_rf.oob_score_)
+            else:
+                sklearn_oob_scores.append(0.0)
+    
+        print()
+        if oob:
+            print(f"{caller_name}: 621 OOB score {np.mean(oob_scores):.2f} vs sklearn OOB {np.mean(sklearn_oob_scores):.2f}")
+        print(f"{caller_name}: 621     Train R^2 score mean {np.mean(train_scores):.2f}, stddev {np.std(train_scores):3f}")
+        print(f"{caller_name}: Sklearn Train R^2 score mean {np.mean(sklearn_train_scores):.2f}, stddev {np.std(sklearn_train_scores):3f}")
+        print(f"{caller_name}: 621     Test  R^2 score mean {np.mean(scores):.2f}, stddev {np.std(scores):3f}")
+        print(f"{caller_name}: Sklearn Test  R^2 score mean {np.mean(sklearn_scores):.2f}, stddev {np.std(sklearn_scores):3f}")
+    
+>       assert np.mean(train_scores) >= min_training_score, \
+               f"Training R^2: {np.mean(train_scores):.2f} must be >= {min_training_score}"
+E       AssertionError: Training R^2: 0.69 must be >= 0.7
+E       assert 0.6898762370877238 >= 0.7
+E        +  where 0.6898762370877238 = <function mean at 0x7fe7e8285040>([0.7077216216672022, 0.6841509017449907, 0.6933275059259991, 0.6743049190127037])
+E        +    where <function mean at 0x7fe7e8285040> = np.mean
+
+test_hidden.py:53: AssertionError
+----------------------------- Captured stdout call -----------------------------
+
+bulldozer: 621     Train R^2 score mean 0.69, stddev 0.012305
+bulldozer: Sklearn Train R^2 score mean 0.73, stddev 0.010757
+bulldozer: 621     Test  R^2 score mean 0.52, stddev 0.044702
+bulldozer: Sklearn Test  R^2 score mean 0.57, stddev 0.017880
+=========================== short test summary info ============================
+FAILED test_hidden.py::test_bulldozer - AssertionError: Training R^2: 0.69 mu...
+========================= 1 failed, 1 passed in 29.98s =========================

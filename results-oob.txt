@@ -1,0 +1,56 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.8.6, pytest-6.2.2, py-1.10.0, pluggy-0.13.1 -- /Users/parrt/opt/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/parrt/grading/msds621/S21/rf-hxu47
+plugins: anyio-2.0.2, xdist-2.2.1, repeat-0.9.1, forked-1.3.0
+gw0 I / gw1 I / gw2 I / gw3 I / gw4 I / gw5 I
+[gw0] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw1] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw2] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw3] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw4] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw5] darwin Python 3.8.6 cwd: /Users/parrt/grading/msds621/S21/rf-hxu47
+[gw0] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw1] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw2] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw3] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw4] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+[gw5] Python 3.8.6 | packaged by conda-forge | (default, Dec 26 2020, 04:50:20)  -- [Clang 11.0.0 ]
+gw0 [8] / gw1 [8] / gw2 [8] / gw3 [8] / gw4 [8] / gw5 [8]
+
+scheduling tests via LoadScheduling
+
+test_rf_oob.py::test_wine_oob 
+test_rf_oob.py::test_diabetes_oob 
+test_rf_oob.py::test_boston_min_samples_leaf_oob 
+test_rf_oob.py::test_boston_oob 
+test_rf_oob.py::test_california_housing_oob 
+test_rf_oob.py::test_iris_oob 
+[gw4] [ 12%] PASSED test_rf_oob.py::test_iris_oob 
+[gw5] [ 25%] PASSED test_rf_oob.py::test_wine_oob 
+[gw3] [ 37%] PASSED test_rf_oob.py::test_california_housing_oob 
+[gw2] [ 50%] PASSED test_rf_oob.py::test_diabetes_oob 
+[gw0] [ 62%] PASSED test_rf_oob.py::test_boston_oob 
+test_rf_oob.py::test_wine_min_samples_leaf_oob 
+[gw1] [ 75%] PASSED test_rf_oob.py::test_boston_min_samples_leaf_oob 
+test_rf_oob.py::test_breast_cancer_oob 
+[gw0] [ 87%] PASSED test_rf_oob.py::test_wine_min_samples_leaf_oob 
+[gw1] [100%] PASSED test_rf_oob.py::test_breast_cancer_oob 
+
+=============================== warnings summary ===============================
+test_rf_oob.py::test_wine_min_samples_leaf_oob
+test_rf_oob.py::test_wine_min_samples_leaf_oob
+test_rf_oob.py::test_breast_cancer_oob
+test_rf_oob.py::test_breast_cancer_oob
+  /Users/parrt/opt/anaconda3/lib/python3.8/site-packages/sklearn/ensemble/_forest.py:541: UserWarning: Some inputs do not have OOB scores. This probably means too few trees were used to compute any reliable oob estimates.
+    warn("Some inputs do not have OOB scores. "
+
+test_rf_oob.py::test_wine_min_samples_leaf_oob
+test_rf_oob.py::test_wine_min_samples_leaf_oob
+test_rf_oob.py::test_breast_cancer_oob
+test_rf_oob.py::test_breast_cancer_oob
+  /Users/parrt/opt/anaconda3/lib/python3.8/site-packages/sklearn/ensemble/_forest.py:545: RuntimeWarning: invalid value encountered in true_divide
+    decision = (predictions[k] /
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+======================== 8 passed, 8 warnings in 34.30s ========================
